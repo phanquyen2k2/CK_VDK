@@ -45,14 +45,14 @@ ESP8266WebServer server(80);
 // Joystick 
 int Joystick_x = A0; // chân x của joystick      (chân A0) (A0 nối với A0 của wifi, VCC nối 3V3 của wifi, GND nối GND của wifi)   
 // int Joystick_y = A3; // chân y của joystick   (chân A3) // Không dùng chân A3 vì không có 
-int Joystick_sw = D3; // chân sw của joystick     (nối với chân D3 của wifi)                 
+int Joystick_sw = 4; // chân sw của joystick     (nối với chân D2 của wifi)                 
 // Joystick_sw Để bình thường là 1 , bấm xuống là 0 
 // Không dùng Joystick_y vẫn chạy bình thường , nó chỉ là không đọc giá trị y thôi                   
 
 void setup() {
   Serial.begin(9600); 
   delay(1000);
-  WiFi.begin("OPPO Reno", "vanmanh999"); //SSID && Pasword
+  WiFi.begin("Tan 2", "111222333"); //SSID && Pasword
   while (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println(".");
   }
@@ -126,15 +126,11 @@ void setup() {
 // Gửi giá trị đọc được từ cảm biến lên web 
 void handleReadSerial() {
   int x,y,sw; //khai báo các biến 
-  x=analogRead(Joystick_x); //đọc giá trị từ chân Analog x // A0 
+  //x=digitalRead(Joystick_x); //đọc giá trị từ chân Analog x // A0 
   // y=analogRead(Joystick_y); //đọc giá trị từ chân Analog y
-  sw=digitalRead(Joystick_sw); //đọc tín hiệu từ chân digital sw // D3
-  server.send(200, "text/plain", "x : " + String(x) + " , sw : " + String(sw) + "\n");
+  sw=digitalRead(Joystick_sw); //đọc tín hiệu từ chân digital sw // D2
+  server.send(200, "text/plain", "sw : " + String(sw) + "\n");
 
-  Serial.print(x);
-  Serial.print("\t");
-  Serial.print(y);
-  Serial.print("\t");
   Serial.print(sw);
   Serial.print("\n");
 }

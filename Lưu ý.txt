@@ -1,0 +1,4 @@
+// theo Ic: 11, 12, 1 chan DC, GND, bo khong lap,1 chan DC , 13, 5V 
+// s -> : chan so, vcc, gnd
+// chân số 4: -> chân D2 trong wifi
+ chân số 5: -> chân D1 trong wifi
